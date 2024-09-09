@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public interface IPlayerState
+namespace PlayerPattern
 {
-    void Handle(PlayerController controller);
+
+    public interface IPlayerState
+    {
+        void HandleInput(Player player, ConsoleKey input);
+        void Update(Player player);
+    }
 }

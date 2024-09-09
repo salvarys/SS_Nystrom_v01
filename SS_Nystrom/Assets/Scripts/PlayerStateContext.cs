@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class PlayerStateContext : MonoBehaviour
+namespace PlayerPattern
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerStateContext 
     {
-        
-    }
+        public IPlayerState _currentState
+        {
+            get;  set;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void SetState(IPlayerState newState)
+        {
+            _currentState = newState;
+        }
+
+        public void HandleInput(ConsoleKey input)
+        {
+            _currentState.HandleInput(this, input);
+        }
+
+        public void Update()
+        {
+            _currentState.Update(this);
+        }
     }
 }
