@@ -1,11 +1,8 @@
 using System;
 
-namespace PlayerPattern
+public interface IPlayerState
 {
+    void Enter(Player player);
+    void Execute(Player player);
 
-    public interface IPlayerState
-    {
-        void HandleInput(Player player, ConsoleKey input);
-        void Update(Player player);
-    }
 }
