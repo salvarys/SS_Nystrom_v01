@@ -36,5 +36,11 @@ public class StandingPlayerState : IPlayerState
             CloakPlayerState cloakState = new CloakPlayerState();
             cloakState.Enter(player);
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            ChangPlayerColorState colorState = new ChangPlayerColorState();
+            colorState.Enter(player);
+        }
     }
 }
