@@ -3,31 +3,28 @@ using UnityEngine;
 public class CloakPlayerState : IPlayerState
 {
     private Player mPlayer;
-    private Renderer playerRenderer; // Used to control visibility
-    private bool isCloaked;          // Tracks if the player is currently cloaked
+    private Renderer playerRenderer; 
+    private bool isCloaked;          
 
     public void Enter(Player player)
     {
         Debug.Log("Cloak On");
         mPlayer = player;
 
-        // Get the Renderer component for visibility control
         playerRenderer = player.GetComponent<Renderer>();
 
-        // Ensure player starts visible
         playerRenderer.enabled = true;
         isCloaked = false;
 
-        player.mCurrentState = this; // Update player's state
+        player.mCurrentState = this; 
     }
 
     public void Execute(Player player)
     {
-        if (Input.GetKeyDown(KeyCode.C)) // Toggle visibility on key press
+        if (Input.GetKeyDown(KeyCode.C)) 
         {
             if (isCloaked)
             {
-                // Turn visible
                 playerRenderer.enabled = true;
                 isCloaked = false;
                 Debug.Log("Cloak Off - Player is now visible.");
@@ -36,7 +33,6 @@ public class CloakPlayerState : IPlayerState
             }
             else
             {
-                // Turn invisible
                 playerRenderer.enabled = false;
                 isCloaked = true;
                 Debug.Log("Cloak On - Player is now invisible.");
